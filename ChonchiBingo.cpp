@@ -17,5 +17,5 @@ int main  (){
 	
 	srand(time(NULL));//Iniciamos numeros aleatorios
 	a=rand()%101; //generaramos numero aleatorio de 0 a 100
-	printf("%d",&v[10]); //hola ambalmejwkbfueg
+	printf("%d",&v[10]); 
 }
