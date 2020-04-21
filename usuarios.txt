@@ -1,1 +1,7 @@
-perpi    5   200
+gmnz		5		200.00
+richi		6		20.00
+Alejandro3011		5		55.00
+RicardoG		5		10.00
+Juanmiguel		12		50.00
+Martinhh		2		5.00
+Rdp69		10		500.00
