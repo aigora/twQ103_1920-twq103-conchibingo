@@ -26,12 +26,20 @@ int main  () {
 	int i=0, nusuarios;
 	float ingreso = 0;
 	char opcion[3] = "SI";
-	struct Tusuarios usuario[200]; //200 es el número máximo de usuarios que podemos introducir
+	struct Tusuarios usuario[200]; //200 es el nÃºmero mÃ¡ximo de usuarios que podemos introducir
 	
-	// Menú (para mejorar)
-	printf ("\nBI3NV3NID0S AL C0NCHIBING0!!!\n\n\n\n");
+	// MenÃº
+	printf("\n");
+	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +-------   +------+\n");
+	printf("|         |      |   |\\       |   |        |      |      |      |      \\      |     |\\       |   |          |      |\n");
+	printf("|         |      |   |  \\     |   |        |______|      |      |_____ /      |     |  \\     |   |          |      |\n");
+	printf("|         |      |   |    \\   |   |        |      |      |      |      \\      |     |    \\   |   |  ----+   |      |\n");
+	printf("|         |      |   |      \\ |   |        |      |      |      |      /      |     |      \\ |   |      |   |      |\n");
+	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +------+   +------+\n");
 	
-	//Abrimos fichero en modo write para escribir los datos de los usuarios en él
+	printf("\n\n\nNORMAS:\n-Maximo de 200 personas por partida.\n-Maximo de 20 cartones por partida.\n\n\n");
+	
+	//Abrimos fichero en modo write para escribir los datos de los usuarios en Ã©l
 	fusuarios = fopen("usuarios.txt", "a");
 	
 	//En caso de no encontrar el fichero se crea el error al encontrarlo
@@ -40,7 +48,7 @@ int main  () {
 		return 0;
 	}
 	
-	//Escribir el nº de usuarios que van a jugar la partida
+	//Escribir el nÂº de usuarios que van a jugar la partida
 	printf ("Ingresar el numero de usuarios que van a jugar la partida: ");
 	scanf ("%i", &nusuarios);
 	
@@ -55,7 +63,7 @@ int main  () {
 	
 	system("cls");
 	
-	//Pedir el nombre, nºcartones y el dinero de los usuarios 
+	//Pedir el nombre, nÂºcartones y el dinero de los usuarios 
 	do{
 		//Pedir nicknames
 		printf ("\nNickname %i: ", i+1);
@@ -69,7 +77,7 @@ int main  () {
 			} while (strcmp(usuario[i].nickname,usuario[i-1].nickname) == 0);
 		}
 		
-		//Pedir nº de cartones
+		//Pedir nÂº de cartones
 		printf ("\nCantidad de cartones de %s: ", usuario[i].nickname);
 		scanf("%i", &usuario[i].cartones);
 		
