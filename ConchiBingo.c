@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#define NFIL 3
+#define NCOL 5
 /*
 IDEAS
 -Numeros calientes
