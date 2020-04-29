@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 /*
 IDEAS
 -Numeros calientes
@@ -19,6 +20,13 @@ struct Tusuarios {
 	int cartones;
 	int part_jugadas, part_ganadas, part_perdidas;
 };
+struct TCartones{
+	int linea1[100];
+	int linea2[100];
+	int linea3[100];
+};
+
+int rellenar_cartones();
 
 int main  () {
 	//DECLARACION DE VARIABLES
@@ -154,3 +162,69 @@ int main  () {
 		i++;
 	}
 }
+
+// Aqui esta la funcion de como rellenar los cartones que se les darán a los jugadores
+/*int rellenar_cartones() {    
+	struct TCartones carton[100];
+	int i, j=0, k, numero, repetido;
+	int numeros[NFIL][NCOL];
+	int cartones;
+	srand(time(NULL));
+	scanf("%d", &cartones);
+	
+	for(i=0;i<cartones;i++) {
+		for(j=0;j<5;j++) {
+		do { 
+		numero=(rand()%89)+1;// Queremos sacar un numero aleatoriamente entre el 1 y el 90
+		repetido=0; //Suponemos que no esta repetido 
+		for(k=0;k<i;k++) { //Comprobamos que no lo esta con los numeros salidos anteriormente
+			if(carton[i].linea1[k]==numero) { 
+				repetido=1; //si esta repetido, sale del bucle for
+				break;
+				}
+			}
+		}while(repetido); 
+	carton[i].linea1[j]=numero; // Aqui ya sabemos que es distinto y vamos a por el siguiente 
+	}
+	for(j=0;j<5;j++) {
+		do { 
+		numero=(rand()%89)+1;// Queremos sacar un numero aleatoriamente entre el 1 y el 90
+		repetido=0; //Suponemos que no esta repetido 
+		for(k=0;k<i;k++) { //Comprobamos que no lo esta con los numeros salidos anteriormente
+			if(carton[i].linea2[k]==numero) { 
+				repetido=1; //si esta repetido, sale del bucle for
+				break;
+				}
+			}
+		}while(repetido); 
+	carton[i].linea2[j]=numero; // Aqui ya sabemos que es distinto y vamos a por el siguiente 
+	}
+	for(j=0;j<5;j++) {
+		do { 
+		numero=(rand()%89)+1;// Queremos sacar un numero aleatoriamente entre el 1 y el 90
+		repetido=0; //Suponemos que no esta repetido 
+		for(k=0;k<i;k++) { //Comprobamos que no lo esta con los numeros salidos anteriormente
+			if(carton[i].linea3[k]==numero) { 
+				repetido=1; //si esta repetido, sale del bucle for
+				break;
+				}
+			}
+		}while(repetido); 
+	carton[i].linea3[j]=numero; // Aqui ya sabemos que es distinto y vamos a por el siguiente 
+	}
+}
+	for(i=0;i<cartones;i++) {
+		for(j=0;j<5;j++) {
+			printf("%d\t", carton[i].linea1[j]);
+		}
+		printf("\n");
+		for(j=0;j<5;j++) {
+			printf("%d\t", carton[i].linea2[j]);
+		}
+		printf("\n");
+		for(j=0;j<5;j++) {
+			printf("%d\t", carton[i].linea3[j]);
+		}
+		printf("\n \n");
+	}
+} */
