@@ -5,7 +5,7 @@ Un Bingo creado para todas las personas que se quiera y con el dinero deseado. T
 Alejandro Gimenez, Juan Miguel de Hoyos, Ricardo Garcia
 
 ## Objetivo del trabajo
-El objetivo del trabajo es utilizar todo tipo de instrucciones en el lenguaje C para realizar el rpograa. Usamos as distintas funciones:
+El objetivo del trabajo es utilizar todo tipo de instrucciones en el lenguaje C para realizar el programa. Usamos las distintas funciones:
 
 - Ficheros para introducir los datos de los usuarios.
 - Estructuras para la orgnización dedichos datos.
