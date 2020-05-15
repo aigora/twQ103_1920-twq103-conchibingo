@@ -27,7 +27,7 @@ struct TCartones {
 	int linea3[100];
 };
 
-int rellenear_cartones();
+void titulo();
 
 
 int main  () {
@@ -35,7 +35,7 @@ int main  () {
 	//DECLARACION DE VARIABLES
 	FILE * fusuarios;  //Fichero para la partida
 	FILE * franking;  //Fichero para el ranking general
-	int i=0, j=-1;  //Variables para bucles
+	int i=0, j=-1, z;  //Variables para bucles
 	int num, nusuarios, repetido;  //Para la bola del bombo y el numero de usuarios
 	int vector[3];  //Para la bola del bombo
 	float ingreso = 0;  //Cantidad de ingreso
@@ -43,24 +43,17 @@ int main  () {
 	char opcion [50];  //Para elecciones
 	char igual_nickname[100];  //Para la busqueda de nicknames iguales
 	
-	struct Tusuarios usuario[200]; //200 es el número máximo de usuarios que podemos introducir
-	
+	struct Tusuarios usuario[200]; //200 es el nÃºmero mÃ¡ximo de usuarios que podemos introducir
+	struct TCartones carton[100];
+	int u, t=0, w, numero, repeticion;
+	int numeros[NFIL][NCOL];
 	srand(time(NULL)); //Iniciamos numero aleatorio
 	
-	// Menú
-	printf("\n");
-	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +-------   +------+\n");
-	printf("|         |      |   |\\       |   |        |      |      |      |      \\      |     |\\       |   |          |      |\n");
-	printf("|         |      |   |  \\     |   |        |______|      |      |_____ /      |     |  \\     |   |          |      |\n");
-	printf("|         |      |   |    \\   |   |        |      |      |      |      \\      |     |    \\   |   |  ----+   |      |\n");
-	printf("|         |      |   |      \\ |   |        |      |      |      |      /      |     |      \\ |   |      |   |      |\n");
-	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +------+   +------+\n");
-	
-	printf ("EL BINGO AL QUE VIENES PARA UNA HORA Y TE QUEDAS CINCO!!\n\n\nNORMAS:\n-En caso de afirmacion, contestar con \"SI\". En caso de negacion, contestar con \"NO\".\n-Maximo de 200 personas por partida.\n-Maximo de 20 cartones por partida.\n-Coste del carton: 2$\n\n\n");  //Normas
-	system ("pause");
+	// MenÃº
+	titulo();
 //	system("cls");
 	
-/*	//Volvemos a abrir el fichero en modo lectura para trabajar con esos datos
+	//Volvemos a abrir el fichero en modo lectura para trabajar con esos datos
 	fusuarios = fopen("usuarios.txt","r");
 	
 	//En caso de no encontrar el fichero se crea el error al encontrarlo
@@ -78,7 +71,7 @@ int main  () {
 	//Cerramos el fichero abierto en modo "read"
 	fclose (fusuarios);
 	
-	//Abrimos fichero en modo write para escribir los datos de los usuarios en él
+	//Abrimos fichero en modo write para escribir los datos de los usuarios en Ã©l
 	fusuarios = fopen("usuarios.txt", "a");
 	
 	//En caso de no encontrar el fichero se crea el error al encontrarlo
@@ -90,16 +83,16 @@ int main  () {
 	printf("\nIngresar el numero de jugadores de la partida: ");
 	fflush(stdin);
 	scanf("%i", &nusuarios);
-*/
+
 	
 	
-	//PRUEBA
+/*	//PRUEBA
 	//Pedir mantener o borrar jugadores
 	printf ("\nEscribir\"MANTENER\" si se desea que jueguen tambien los jugadores de la partida anterior.\nEscribir \"BORRAR\" si se desea borrar a todos los usuarios anteriores de la partida actual.\n\n\n*NOTA: Si se selecciona borrar, se borran a todos los usuarios de la partida, no del ranking.\n\n\n");  //Dar la opcion de borrar o de mantener los datos de los usuarios
 	fflush(stdin);
 	gets(opcion);
 	
-	//En caso de no introducir algo válido
+	//En caso de no introducir algo vÃ¡lido
 	do{
 		if (strcmp(opcion,"MANTENER") == 0  ||  strcmp(opcion,"mantener") == 0  ||  strcmp(opcion,"BORRAR") == 0  ||  strcmp(opcion,"borrar") == 0) {
 			break;
@@ -113,7 +106,7 @@ int main  () {
 	//En caso de mantener los usuarios en la partida
 	if (strcmp(opcion,"MANTENER") == 0  ||  strcmp(opcion,"mantener") == 0) {
 		
-		//Abrir el fichero para añadir datos. Se mantienen
+		//Abrir el fichero para aÃ±adir datos. Se mantienen
 		fusuarios = fopen("usuarios.txt", "r");
 		
 		//En caso de no encntrar el fichero
@@ -133,7 +126,7 @@ int main  () {
 			i++;
 		}
 		
-		//Preguntar si se quieren añadir usuarios
+		//Preguntar si se quieren aÃ±adir usuarios
 		printf ("Escribir si se desea agregar usuarios: ");
 		fflush(stdin);
 		gets(opcion);
@@ -150,7 +143,7 @@ int main  () {
 	//En caso de borrar los usuarios del partida
 	else if (strcmp(opcion,"BORRAR") == 0  ||  strcmp(opcion,"borrar") == 0) {
 		fusuarios = fopen("usuarios.txt","w");
-	}
+	} */
 
 	//SEGURO
 	//Controlar el numero de usuarios con los que se juegan
@@ -165,7 +158,7 @@ int main  () {
 	
 //	system ("cls");
 	
-	//Pedir el nombre, nºcartones y el dinero de los usuarios 
+	//Pedir el nombre, nÂºcartones y el dinero de los usuarios 
 	i = 0;
 	ingreso = 0;
 	
@@ -188,7 +181,7 @@ int main  () {
 		j = -1;
 		
 		
-		//Pedir nº de cartones
+		//Pedir nÂº de cartones
 		printf ("\nCantidad de cartones de %s: ", usuario[i].nickname);
 		scanf("%i", &usuario[i].cartones);
 		
@@ -220,7 +213,6 @@ int main  () {
 				//Si ingresa y tiene menos de 2$
 				if (usuario[i].dinero < 2) {
 					printf("\n\n*NOTIFICACION: El usuario %s no puede jugar con ningun carton.\n\n\n", usuario[i].nickname);
-					system("pause");
 				} else {  //Si no le llega ingresando pero tiene mas de 2$, reducir cartones
 					if (usuario[i].dinero < (usuario[i].cartones * 2)) {
 						printf("El usuario %s no puede jugar con esa cantidad de cartones. Reduzca la cantidad de estos: ", usuario[i].nickname);
@@ -235,18 +227,15 @@ int main  () {
 						}
 						
 						printf ("\n\n*NOTIFICACION: El usuario %s ahora puede jugar\n\n\n", usuario[i].nickname);
-						system ("pause");
 					} 
 					else {  //Si ingresa y le llega para jugar 
 						printf ("\n\n*NOTIFICACION: El usuario %s ahora puede jugar\n\n\n", usuario[i].nickname);
-						system ("pause");
 					}
 				}
 			}  
 			else {  //No ingresa y tienes menos de 2$
 				if (usuario[i].dinero < 2) {
 				printf("\n\n*NOTIFICACION: El usuario %s no puede jugar con ningun carton.\n\n\n", usuario[i].nickname);
-				system("pause");
 				} 
 				else {  //No ingresa y tienes mas de 2$
 					if (usuario[i].dinero < (usuario[i].cartones * 2)) {
@@ -262,20 +251,93 @@ int main  () {
 						}
 						
 						printf ("\n\n*NOTIFICACION: El usuario %s ahora puede jugar\n\n\n", usuario[i].nickname);
-						system ("pause");
 					} 
 					else {
 						printf ("\n\n*NOTIFICACION: El usuario %s ahora puede jugar\n\n\n", usuario[i].nickname);
-						system ("pause");
 					}
 				}
 			} 
 		} //Si tiene dinero
 		else {
 			printf ("\n\n*NOTIFICACION: El usuario %s ahora puede jugar\n\n\n", usuario[i].nickname);
-			system ("pause");
 		}
 		
+		printf("%d\n", usuario[i].cartones);
+		printf("Estos son los cartones de %s\n\n", usuario[i].nickname);
+			
+	
+		//Para crear e imprimir los cartones
+		for(u=0;u<usuario[i].cartones;u++) {
+			
+			//Para crear los numeros de la primera linea
+			for(t=0;t<5;t++) {
+				do { 
+					numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
+					repeticion=0;  //Suponemos que no esta repetido 
+					
+					for(w=0;w<u;w++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
+						if(carton[u].linea1[w]==numero) { 
+							repeticion=1;  //Si esta repetido, sale del bucle for
+							break;
+						}
+					}	
+				} while(repeticion>0); 
+				
+				carton[u].linea1[t]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
+			}
+			
+			//Para crear los numeros de la segunda linea
+			for(t=0;t<5;t++) {
+				do { 
+					numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
+					repeticion=0;  //Suponemos que no esta repetido 
+					
+					for(w=0;w<u;w++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
+						if(carton[u].linea2[w]==numero) { 
+							repeticion=1;  //Si esta repetido, sale del bucle for
+							break;
+						}
+					}
+				} while(repeticion>0); 
+				
+				carton[u].linea2[t]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
+			}
+			
+			//Para crear los numeros de la tercera linea
+			for(t=0;t<5;t++) {
+				do { 
+					numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
+					repeticion=0;  //Suponemos que no esta repetido
+					 
+					for(w=0;w<u;w++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
+						if(carton[u].linea3[w]==numero) { 
+							repeticion=1;  //Si esta repetido, sale del bucle for
+							break;
+						}
+					}
+				} while(repeticion>0); 
+				
+				carton[u].linea3[t]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
+			}
+		}
+		
+		for(u=0;u<usuario[i].cartones;u++) {
+			for(t=0;t<5;t++) {
+				printf("%d\t", carton[u].linea1[t]);  //Imprimir los numeros de la primera linea
+			}
+			printf("\n");
+			for(t=0;t<5;t++) {
+				printf("%d\t", carton[u].linea2[t]);  //Imprimr los numeros de la segunda linea
+			}
+			printf("\n");
+			for(t=0;t<5;t++) {
+				printf("%d\t", carton[u].linea3[t]);  //Imprimir los nueros de la tercera linea
+			}
+			printf("\n\n");
+		} 
+		
+		
+		system("pause");
 		system ("cls");
 		ingreso = 0;
 		
@@ -287,102 +349,40 @@ int main  () {
 	//Cerramos el fichero
 	fclose (fusuarios);
 	
-	
+
+		int a, b, rep, numerito;
+	int vector1[100];
 	//FUNCIONAMIENTO DEL BOMBO	
-	for(i=0;i<90;i++){  //Hacemos un bucle para que se repita hasta bingo 
-		num =(rand()%89)+1;  //Sacar numero aleatorio
-		repetido = 0;
-		system("pause");
-			for(j=0; j<i; j++){
-	        	if(num == vector[j])
-	          repetido =-1;   
-			  break;        
-	          }
-	    vector [ i ] =num;
-	    printf("\t----\t\n");
-	    printf("\t| %d |\t" ,num);
-	    printf("\t----\t\n");
-	}
-	
-}
-
-
-//FUNCION DE LOS CARTONES
-int rellenar_cartones() { 
-   
-	struct TCartones carton[100];
-	int i, j=0, k, numero, repetido;
-	int numeros[NFIL][NCOL];
-	int cartones;
-	srand(time(NULL));
-	scanf("%d", &cartones);
-	
-	//Para crear e imprimir los cartones
-	for(i=0;i<cartones;i++) {
-		
-		//Para crear los numeros de la primera linea
-		for(j=0;j<5;j++) {
-			do { 
-				numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
-				repetido=0;  //Suponemos que no esta repetido 
+	for(a=0;a<90;a++){  //Hacemos un bucle para que se repita hasta bingo 
+		do { 
+				numerito=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
+				rep=0;  //Suponemos que no esta repetido 
 				
-				for(k=0;k<i;k++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
-					if(carton[i].linea1[k]==numero) { 
-						repetido=1;  //Si esta repetido, sale del bucle for
-						break;
+				for(b=0;b<a;b++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
+					if(vector1[b]==numerito) { 
+						rep=1;  //Si esta repetido, sale del bucle for
+						
 					}
 				}	
-			} while(repetido); 
-			
-			carton[i].linea1[j]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
-		}
+			} while(rep>0);
 		
-		//Para crear los numeros de la primera linea
-		for(j=0;j<5;j++) {
-			do { 
-				numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
-				repetido=0;  //Suponemos que no esta repetido 
-				
-				for(k=0;k<i;k++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
-					if(carton[i].linea2[k]==numero) { 
-						repetido=1;  //Si esta repetido, sale del bucle for
-						break;
-					}
-				}
-			} while(repetido); 
-			
-			carton[i].linea2[j]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
-		}
-		
-		for(j=0;j<5;j++) {
-			do { 
-				numero=(rand()%89)+1;  //Queremos sacar un numero aleatoriamente entre el 1 y el 90
-				repetido=0;  //Suponemos que no esta repetido
-				 
-				for(k=0;k<i;k++) {  //Comprobamos que no lo esta con los numeros salidos anteriormente
-					if(carton[i].linea3[k]==numero) { 
-						repetido=1;  //Si esta repetido, sale del bucle for
-						break;
-					}
-				}
-			} while(repetido); 
-			
-			carton[i].linea3[j]=numero;  //Aqui ya sabemos que es distinto y vamos a por el siguiente 
-		}
+	    vector1 [ a ] =numerito;
+	    printf("\t----\t\n");
+	    printf("\t| %d |\t" ,numerito);
+	    printf("\t----\t\n");
+	    system ("pause");
 	}
+}
+
+void titulo(){
+	printf("\n");
+	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +-------   +------+\n");
+	printf("|         |      |   |\\       |   |        |      |      |      |      \\      |     |\\       |   |          |      |\n");
+	printf("|         |      |   |  \\     |   |        |______|      |      |_____ /      |     |  \\     |   |          |      |\n");
+	printf("|         |      |   |    \\   |   |        |      |      |      |      \\      |     |    \\   |   |  ----+   |      |\n");
+	printf("|         |      |   |      \\ |   |        |      |      |      |      /      |     |      \\ |   |      |   |      |\n");
+	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +------+   +------+\n");
 	
-	for(i=0;i<cartones;i++) {
-		for(j=0;j<5;j++) {
-			printf("%d\t", carton[i].linea1[j]);  //Imprimir los numeros de la primera linea
-		}
-		printf("\n");
-		for(j=0;j<5;j++) {
-			printf("%d\t", carton[i].linea2[j]);  //Imprimr los numeros de la segunda linea
-		}
-		printf("\n");
-		for(j=0;j<5;j++) {
-			printf("%d\t", carton[i].linea3[j]);  //Imprimir los nueros de la tercera linea
-		}
-		printf("\n\n");
-	}
+	printf ("EL BINGO AL QUE VIENES PARA UNA HORA Y TE QUEDAS CINCO!!\n\n\nNORMAS:\n-En caso de afirmacion, contestar con \"SI\". En caso de negacion, contestar con \"NO\".\n-Maximo de 200 personas por partida.\n-Maximo de 20 cartones por partida.\n-Coste del carton: 2$\n\n\n");  //Normas
+	system ("pause");
 }
