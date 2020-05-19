@@ -240,13 +240,14 @@ int main  () {
 							} else if (carton[2][l] == 0) {
 								contador_linea3++; 
 							}
-						if (contador_linea1 == 5 || contador_linea2 == 5 || contador_linea3 == 5) {
-							printf("¡El usuario %s ha cantado linea!", usuario[i].nickname);
-							usuario[i].dinero += (1/10)*dinero_partida;
-						}
-						if (contador_linea1 == 5 && contador_linea2 == 5 && contador_linea3 == 5) {
-							printf("¡El usuario %s ha cantado bingo!", usuario[i].nickname);
-							usuario[i].dinero += (1/2)*dinero_partida;
+							if (contador_linea1 == 5 || contador_linea2 == 5 || contador_linea3 == 5) {
+								printf("¡El usuario %s ha cantado linea!", usuario[i].nickname);
+								usuario[i].dinero += (1/10)*dinero_partida;
+							}
+							if (contador_linea1 == 5 && contador_linea2 == 5 && contador_linea3 == 5) {
+								printf("¡El usuario %s ha cantado bingo!", usuario[i].nickname);
+								usuario[i].dinero += (1/2)*dinero_partida;
+							}
 						}
 					}
 				}
