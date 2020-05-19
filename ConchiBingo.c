@@ -1,4 +1,4 @@
-#include <stdio.h>  
+#include <stdio.h>   
 #include <string.h>
 #include <stdlib.h>
 #include <time.h> 
@@ -19,8 +19,7 @@ int main  () {
 	
 	//DECLARACION DE VARIABLES
 	FILE * fusuarios;  //Fichero para la partida
-	FILE * franking;  //Ficheros para la partida
-	int i=0, j=-1, k, l, m, n, z, numero, nusuarios, repetido;  //Variables para bucles
+	int i=0, j=-1, k, l, m, n, z, numero, nusuarios, repetido,contador_linea1=0,contador_linea2=0,contador_linea3=0;  //Variables para bucles
 	int contador=0;
 	int bombo[100];  //Numeros del bombo
 	float ingreso = 0;  //Cantidad de ingreso
@@ -28,11 +27,11 @@ int main  () {
 	char igual_nickname[100];  //Para la busqueda de nicknames iguales
 	float dinero_partida = 0;  //Dinero total que se va a repartir entre el que cante linea y bingo
 	
-	struct Tusuarios usuario[200];  //200 es el número máximo de usuarios que podemos introducir
-	int carton[NFIL][NCOL]; //Matriz con el tamaño del carton
+	struct Tusuarios usuario[200];  //200 es el nÃºmero mÃ¡ximo de usuarios que podemos introducir
+	int carton[NFIL][NCOL]; //Matriz con el tamaÃ±o del carton
 	srand(time(NULL));  //Iniciamos numero aleatorio
 	
-	// Menú
+	// MenÃº
 	titulo();
 	system("cls");
 	
@@ -60,7 +59,7 @@ int main  () {
 
 	system ("cls");
 	
-	//Pedir el nombre, nºcartones y el dinero de los usuarios 
+	//Pedir el nombre, nÂºcartones y el dinero de los usuarios 
 	i = 0;
 	ingreso = 0;
 	
@@ -83,7 +82,7 @@ int main  () {
 		j = -1;
 		
 		
-		//Pedir nº de cartones
+		//Pedir nÂº de cartones
 		printf ("\nCantidad de cartones de %s: ", usuario[i].nickname);
 		scanf("%i", &usuario[i].cartones);
 		
@@ -175,15 +174,15 @@ int main  () {
 						numero = (rand()%90)+1; //Se crea el numero aleatorio
 						repetido = 0;
 						
-						for (m=0; m<=k; m++) {  //Se leen todos los numeros hasta la última columna
-							for (n=0; n<=l; n++) {  //Se leen todos los numeros hasta la última columna
+						for (m=0; m<=k; m++) {  //Se leen todos los numeros hasta la Ãºltima columna
+							for (n=0; n<=l; n++) {  //Se leen todos los numeros hasta la Ãºltima columna
 							
-								if(carton[m][n] == numero) {  //Si alguno de los numeros está repetido se crea un nuevo numero hasta que no lo esté
-									repetido = 1;  //Suponemos que está repetido
+								if(carton[m][n] == numero) {  //Si alguno de los numeros estÃ¡ repetido se crea un nuevo numero hasta que no lo estÃ©
+									repetido = 1;  //Suponemos que estÃ¡ repetido
 								}
 							}	
 						} 
-					} while (repetido>0); //El bucle se repite mientras que el numero sea igual a cualquier numero comprobado en el cartón
+					} while (repetido>0); //El bucle se repite mientras que el numero sea igual a cualquier numero comprobado en el cartÃ³n
 					
 					
 					carton[k][l] = numero;
@@ -239,7 +238,7 @@ int main  () {
 								break;
 							}
 							
-						/*	if (carton[0][l] == 0) {  //Para comprobar si hay linea
+							if (carton[0][l] == 0) {  //Para comprobar si hay linea
 								contador_linea1++;
 							} else if (carton[1][l] == 0) {
 								contador_linea2++;
@@ -253,7 +252,7 @@ int main  () {
 							if (contador_linea1 == 5 && contador_linea2 == 5 && contador_linea3 == 5) {
 								printf("¡El usuario %s ha cantado bingo!", usuario[i].nickname);
 								usuario[i].dinero += (1/2)*dinero_partida;
-							} */
+							} 
 						if (contador == 15) {
 							break;	
 						}	
@@ -268,14 +267,15 @@ int main  () {
 	if (contador == 15)
 	break;
 	}
-	
 	//usuario[bingo].dinero = usuario[bingo].dinero + (1/2)*dinero_partida;
 	//usuario[linea].dinero = usuario[linea].dinero + (1/10)*dinero_partida;
-	
-	
-	
 	for (i=0; i<nusuarios; i++) {
-		fprintf(fusuarios, "%s\t %d\t %0.2f \n", usuario[i].nickname, usuario[i].cartones, usuario[i].dinero);
+	printf("%s\t  %0.2f \n", usuario[i].nickname, usuario[i].dinero);
+	}
+	
+	i=0;
+	for(i=0;i<nusuarios; i++) {
+		fprintf(fusuarios, "%s\t  %0.2f \n", usuario[i].nickname, usuario[i].dinero);
 	}
 	
 	//Cerramos el fichero
