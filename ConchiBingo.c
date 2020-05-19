@@ -21,7 +21,7 @@ int main  () {
 	FILE * fusuarios;  //Fichero para la partida
 	FILE * franking;  //Ficheros para la partida
 	int i=0, j=-1, k, l, m, n, z, numero, nusuarios, repetido;  //Variables para bucles
-	int contador_linea1 = 0, contador_linea2 = 0, contador_linea3 = 0;
+	int contador=0;
 	int bombo[100];  //Numeros del bombo
 	float ingreso = 0;  //Cantidad de ingreso
 	char opcion [50];  //Para elecciones
@@ -226,14 +226,20 @@ int main  () {
 	    printf("\n\t----\t");
 	    system ("pause");
 	    
-	    for (i=0; usuario[i].cartones<nusuarios; i++) {  //Recorres todos los usuarios
+	    for (i=0; i<nusuarios; i++) {  //Recorres todos los usuarios
 	    	for (j=0; j<usuario[i].cartones; j++) {  //Recorres todos los cartones
 	    		for (k=0; k<NFIL; k++) {  //Recorrer todas las filas
 					for (l=0; l<NCOL; l++) {  //Recorrer todas las columnas
 						if(numero == carton[k][l]) {
 							carton[k][l] = 0;  //Si el numero del bombo coincide con el del carton, se sustituye por 0
+							contador++;
 							
-							if (carton[0][l] == 0) {  //Para comprobar si hay linea
+							if(contador==15){
+								printf("El usuario %s ha cantado BINGO\n", usuario[i].nickname);
+								break;
+							}
+							
+						/*	if (carton[0][l] == 0) {  //Para comprobar si hay linea
 								contador_linea1++;
 							} else if (carton[1][l] == 0) {
 								contador_linea2++;
@@ -247,12 +253,20 @@ int main  () {
 							if (contador_linea1 == 5 && contador_linea2 == 5 && contador_linea3 == 5) {
 								printf("¡El usuario %s ha cantado bingo!", usuario[i].nickname);
 								usuario[i].dinero += (1/2)*dinero_partida;
-							}
-						}
-					}
-				}
-			}
-		}
+							} */
+						if (contador == 15) {
+							break;	
+						}	
+					if (contador == 15)
+						break;}
+				if (contador == 15)
+					break;}
+			if (contador == 15)
+				break;}}
+		if (contador == 15)
+			break;}
+	if (contador == 15)
+	break;
 	}
 	
 	//usuario[bingo].dinero = usuario[bingo].dinero + (1/2)*dinero_partida;
