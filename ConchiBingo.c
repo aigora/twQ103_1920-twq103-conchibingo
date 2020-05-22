@@ -264,7 +264,7 @@ int main  () {
 	}
 
 	printf("\nDinero: ");
-	fprintf(fusuarios, "Dinero: ");
+	fprintf(fusuarios, "\nDinero: ");
 	for (i=0; i<nusuarios; i++) {
 		printf("%0.2f\t", usuario[i].dinero-2*usuario[i].cartones);
 		fprintf(fusuarios, "%0.2f\t", usuario[i].dinero-2*usuario[i].cartones);
