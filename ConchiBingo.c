@@ -231,25 +231,7 @@ int main  () {
 										usuario[i].dinero=usuario[i].dinero+(dinero_partida/2);
 										break;
 									}
-									/*
-									c=carton[0][l];
-									d=carton[1][l];
-									e=carton[2][l];
-							
-									if (c!=((c>0)&&(c<0))) {  //Para comprobar si hay linea
-										contador_linea1++;
-									} 
-									else if (d!=((d>0)&&(d<0))){
-										contador_linea2++;
-									} 
-									else if(e!=((e>0)&&(e<0))) {
-										contador_linea3++; 
-									}
-									if (contador_linea1 == 5 || contador_linea2 == 5 || contador_linea3 == 5) {
-										printf("¡El usuario %s ha cantado linea!", usuario[i].nickname);
-										usuario[i].dinero += (1/10)*dinero_partida;
-									}
-									*/
+									
 								}	
 							}
 							if (contador == 15) {
