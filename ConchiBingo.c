@@ -70,7 +70,7 @@ int main  () {
 		//En caso de repetirse el nombre, pedirlo de nuevo
 		do {
 			if (strcmp(usuario[j].nickname,usuario[i].nickname) == 0) {  //Si la del fichero es igual a la escrita:
-				printf("El nickname %s no es valido puesto que ya es usado por otro jugador del inscrito en el ranking. Introduzca otro nickname para el usuario %i: ", usuario[i].nickname, i+1);
+				printf("El nickname %s no es valido puesto que ya es usado por otro jugador en la partida. Introduzca otro nickname para el usuario %i: ", usuario[i].nickname, i+1);
 				fflush(stdin);
 				gets(usuario[i].nickname);
 			}
