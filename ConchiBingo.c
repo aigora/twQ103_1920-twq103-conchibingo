@@ -254,8 +254,8 @@ int main  () {
 			break;
 		}
 	}
-	//usuario[bingo].dinero = usuario[bingo].dinero + (1/2)*dinero_partida;
-	//usuario[linea].dinero = usuario[linea].dinero + (1/10)*dinero_partida;
+	
+	printf("Los datos tras acabar la partida son: ");
 	for (i=0; i<nusuarios; i++) {
 	printf("%s\t  %0.2f \n", usuario[i].nickname, usuario[i].dinero-2*usuario[i].cartones);
 	}
