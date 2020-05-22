@@ -255,14 +255,19 @@ int main  () {
 		}
 	}
 	
-	printf("Los datos tras acabar la partida son: ");
+	printf("\nLos datos tras acabar la partida son: \n\n");
+	printf("Nickname: ");
+	fprintf(fusuarios, "Nickname: ");
 	for (i=0; i<nusuarios; i++) {
-	printf("%s\t  %0.2f \n", usuario[i].nickname, usuario[i].dinero-2*usuario[i].cartones);
+		printf("%s\t", usuario[i].nickname);
+		fprintf(fusuarios, "%s\t", usuario[i].nickname);
 	}
-	
-	i=0;
-	for(i=0;i<nusuarios; i++) {
-		fprintf(fusuarios, "%s\t  %0.2f \n", usuario[i].nickname, usuario[i].dinero);
+
+	printf("\nDinero: ");
+	fprintf(fusuarios, "Dinero: ");
+	for (i=0; i<nusuarios; i++) {
+		printf("%0.2f\t", usuario[i].dinero-2*usuario[i].cartones);
+		fprintf(fusuarios, "%0.2f\t", usuario[i].dinero-2*usuario[i].cartones);
 	}
 	
 	//Cerramos el fichero
