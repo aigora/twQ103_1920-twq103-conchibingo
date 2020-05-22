@@ -246,9 +246,9 @@ int main  () {
 			} while(repetido>0);
 		
 	    bombo[z]=numero;
-	    printf("\n\t----\t\n");
+	    printf("\n\t ----\t\n");
 	    printf("\t| %d |\t", numero);
-	    printf("\n\t----\t");
+	    printf("\n\t ----\t");
 	    system ("pause");
 		if (contador == 15) {
 			break;
