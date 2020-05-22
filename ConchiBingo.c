@@ -277,6 +277,6 @@ void titulo() {
 	printf("|         |      |   |      \\ |   |        |      |      |      |      /      |     |      \\ |   |      |   |      |\n");
 	printf("+------   +------+   +        +   +------  +      +    -----    +-----+     -----   +        +   +------+   +------+\n");
 	
-	printf ("EL BINGO AL QUE VIENES PARA UNA HORA Y TE QUEDAS CINCO!!\n\n\nNORMAS:\n-En caso de afirmacion, contestar con \"SI\". En caso de negacion, contestar con \"NO\".\n-Maximo de 200 personas por partida.\n-Maximo de 20 cartones por partida.\n-Coste del carton: 2$\n\n\n");  //Normas
+	printf ("EL BINGO AL QUE VIENES PARA UNA HORA Y TE QUEDAS CINCO!!\n\n\nNORMAS:\n-En caso de afirmacion, contestar con \"SI\". En caso de negacion, contestar con \"NO\".\n-Maximo de 200 personas por partida.\n-Maximo de 20 cartones por usuario.\n-Coste del carton: 2$\n\n\n");  //Normas
 	system ("pause");
 }
