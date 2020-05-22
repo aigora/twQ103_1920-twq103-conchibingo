@@ -1,7 +1,7 @@
-#include <stdio.h>  
-#include <string.h>
-#include <stdlib.h>
-#include <time.h> 
+#include <stdio.h>  //Para la entrada y salid de datos
+#include <string.h>  //Para facilitar el uso del manejode cadenas de caracteres
+#include <stdlib.h>  //Para comandos que ayudan a la visualizacion del codigo
+#include <time.h>  //Libreria para crear los numeros aleatrios
 #define NFIL 3  //La cantidad de filas que hay en un carton
 #define NCOL 5  //La cantidad de columnas que hay en un carton
 
@@ -10,7 +10,7 @@
 struct Tusuarios {
 	char nickname[100];  //Nombre de jugador
 	float dinero;  //Dinero de jugador
-	int cartones;  //Numero de cartones para la partida
+	int cartones;  //Cantidad de cartones para la partida
 };
 
 void titulo();
@@ -19,36 +19,36 @@ int main  () {
 	
 	//DECLARACION DE VARIABLES
 	FILE * fusuarios;  //Fichero para la partida
-	int i=0, j=-1, a,b,c,d,e,k, l,q, m, n, z, numero, nusuarios, repetido,contador_linea1=0,contador_linea2=0,contador_linea3=0;  //Variables para bucles
-	int contador=0;
+	int i=0, j=-1, a,b,c,d,e,k, l,q, m, n, z, numero, nusuarios, repetido; //Variables de tipo int necesarias para el correcto funcionamiento del programa
+	int contador=0; //Para cantar bingo
 	int bombo[100];  //Numeros del bombo
 	float ingreso = 0;  //Cantidad de ingreso
-	char opcion [50];  //Para elecciones
+	char opcion [50];  //Para elegir opciones, ya sea si o no
 	char igual_nickname[100];  //Para la busqueda de nicknames iguales
 	float dinero_partida = 0;  //Dinero total que se va a repartir entre el que cante linea y bingo
 	
-	struct Tusuarios usuario[200];  //200 es el nÃºmero mÃ¡ximo de usuarios que podemos introducir
-	int carton[NFIL][NCOL]; //Matriz con el tamaÃ±o del carton
+	struct Tusuarios usuario[200];  //200 es el numero maximo de usuarios que podemos introducir
+	int carton[NFIL][NCOL]; //Matriz con el tamaño del carton
 	srand(time(NULL));  //Iniciamos numero aleatorio
 	
-	// MenÃº
-	titulo();
-	system("cls");
+	//MENU
+	titulo();  //LLamamos a la funcion titulo, la cual imprime por pantalla el menu entero
+	system("cls");  //Limpiamos la pantalla
 	
-	//Volvemos a abrir el fichero en modo write para trabajar con esos datos
+	//Abrimos el fichero en modo write para trabajar con esos datos
 	fusuarios = fopen("usuarios.txt","w");
 	
 	//En caso de no encontrar el fichero se crea el error al encontrarlo
 	if (fusuarios == NULL) {
-		printf ("***ERROR***\tNo se ha encontrado el archivo\n");
-		return 0;
+		printf ("*ERROR*\tNo se ha encontrado el archivo\n");
+		return 0;  //Se cierra el programa
 	}
 	
 	//Pedir la cantidad de usuarios por partida
 	printf("\nIngresar el numero de jugadores de la partida: ");
 	scanf("%d", &nusuarios);
 
-	//Controlar el numero de usuarios con los que se juegan
+	//Controlar el numero de usuarios con los que se juegan, ya que solo se pueden como máximo 200 usuarios
 	if (nusuarios < 1 || nusuarios > 200) {
 		do {
 			printf("No se puede jugar con esos jugadores. Escriba de nuevo la cantidad de jugadores de la partida: "); 
@@ -57,15 +57,12 @@ int main  () {
 		} while (nusuarios < 1  ||  nusuarios > 200);
 	}
 
-	system ("cls");
+	system ("cls");  //Limpiamos la pantalla
+	i = 0;  //Para volver a usar la variable en un bucle la igualamos a 0
 	
-	//Pedir el nombre, nÂºcartones y el dinero de los usuarios 
-	i = 0;
-	ingreso = 0;
-	
-	//Pedida de datos
+	//PEDIDA DE DATOS
 	do{
-		//Pedir nicknames
+		//Pedir el nombre o nickname de cada usuario
 		printf ("\nNickname %i: ", i+1);
 		fflush(stdin);
 		gets(usuario[i].nickname);
@@ -82,7 +79,7 @@ int main  () {
 		j = -1;
 		
 		
-		//Pedir nÂº de cartones
+		//Pedir el numero de cartones con los que cada jugador
 		printf ("\nCantidad de cartones de %s: ", usuario[i].nickname);
 		scanf("%i", &usuario[i].cartones);
 		
